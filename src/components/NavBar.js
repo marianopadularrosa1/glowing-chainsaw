@@ -4,9 +4,9 @@ function NavBar() {
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <p class="navbar-brand" href="#">
           TastyCoffee
-        </a>
+        </p>
         <button
           class="navbar-toggler"
           type="button"
@@ -21,9 +21,9 @@ function NavBar() {
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#hero">
+              <p class="nav-link active" aria-current="page" href="#hero">
                 Inicio
-              </a>
+              </p>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="#productos">
