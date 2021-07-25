@@ -1,24 +1,18 @@
-import logo from './logo.svg';
+
 import './App.css';
+import NavBar from './components/NavBar.js';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <div className="App">
+      <NavBar/>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-          Tasty Coffee mi primer proyecto de React
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+      <section>
+        <h1>Hola soy h1</h1>
+      </section>
+      <Footer nombre="Tasty Coffee"/>
     </div>
   );
 }
