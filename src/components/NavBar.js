@@ -21,24 +21,24 @@ function NavBar() {
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <p class="nav-link active" aria-current="page" href="#hero">
+              <p class="nav-link active" aria-current="page" >
                 Inicio
               </p>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="#productos">
+              <p class="nav-link active" >
                 Productos
-              </a>
+              </p>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="#servicios">
+              <p class="nav-link active" >
                 Servicios
-              </a>
+              </p>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="#aboutus">
+              <p class="nav-link active" >
                 Quienes Somos
-              </a>
+              </p>
             </li>
           </ul>
         </div>
