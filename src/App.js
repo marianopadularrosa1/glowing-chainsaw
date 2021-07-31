@@ -1,9 +1,9 @@
 
 import './App.css';
 import NavBar from './components/NavBar.js';
-import CardComponent from './components/CardComponent';
 import Footer from './components/Footer';
 import ItemListContainer from './components/ItemListContainer.js';
+import ItemCount from './components/ItemCount';
 
 function App() {
   return (
@@ -11,9 +11,10 @@ function App() {
       <NavBar/>
       <header className="App-header">
       <ItemListContainer greetings={'PARAMETRO1'}/>
+      <ItemCount stock={8} initial={2}/>
       </header>
       <section>
-        <h1>Hola soy h1</h1>
+        <h1>Section</h1>
       </section>
       <Footer nombre="Tasty Coffee"/>
     </div>
