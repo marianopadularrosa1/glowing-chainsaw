@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Button from "./button";
+import ButtonAgregarCarrito from "./ButtonAgregarCarrito";
 
 export default function ItemCount(props) {
   const [count, setCount] = useState(props.initial);
   const [initial] = useState(props.initial);
-  const [stock] = useState(props.stock);
+  const [stock, setStock] = useState(props.stock);
   const [deshabilitarBoton, setDeshabilitarBoton]= useState(false);
 
   useEffect(() => {
@@ -20,6 +21,7 @@ export default function ItemCount(props) {
       <h1>stock: {stock}</h1>
       <Button deshabilitarBoton={deshabilitarBoton} text="sumar" cuandohagoClick={() => setCount(count + 1)} />
       <Button text="restar" cuandohagoClick={() => setCount(count - 1)} />
+      <ButtonAgregarCarrito deshabilitarBoton={deshabilitarBoton} text="Agregar al Carrito" onAdd={() => setStock(stock - count)} />
     </React.Fragment>
   );
 }
