@@ -5,9 +5,10 @@ export default function ItemCount(props) {
   const [count, setCount] = useState(props.initial);
   const [initial] = useState(props.initial);
   const [stock] = useState(props.stock);
+  const [deshabilitarBoton, setDeshabilitarBoton]= useState(false);
 
   useEffect(() => {
-    //console.log("aca soy un componentDidMount", count);
+    if(stock<=0){setDeshabilitarBoton(true);}
     if(count>=stock){setCount(stock);}
     if(count<=0){setCount(0);}
   }, [count,initial,stock]); 
@@ -17,7 +18,7 @@ export default function ItemCount(props) {
       <h1>contador: {count}</h1>
       <h1>initial: {initial}</h1>
       <h1>stock: {stock}</h1>
-      <Button text="sumar" cuandohagoClick={() => setCount(count + 1)} />
+      <Button deshabilitarBoton={deshabilitarBoton} text="sumar" cuandohagoClick={() => setCount(count + 1)} />
       <Button text="restar" cuandohagoClick={() => setCount(count - 1)} />
     </React.Fragment>
   );

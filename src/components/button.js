@@ -1,6 +1,6 @@
 export default function Button(props) {
     return (
-      <button onClick={() => props.cuandohagoClick()}>
+      <button disabled={props.deshabilitarBoton} onClick={() => props.cuandohagoClick()}>
         {props.text}
       </button>
     );

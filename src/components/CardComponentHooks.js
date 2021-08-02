@@ -3,8 +3,8 @@ import Button from "./button";
 
 export default function CardComponentHooks(props) {
   const [count, setCount] = useState(props.initial);
-  const [initial, setInitial] = useState(props.initial);
-  const [stock, setStock] = useState(props.stock);
+  const [initial] = useState(props.initial);
+  const [stock] = useState(props.stock);
 
   useEffect(() => {
     console.log("aca soy un componentDidMount", count);
