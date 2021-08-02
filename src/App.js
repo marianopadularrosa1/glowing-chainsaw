@@ -11,7 +11,7 @@ function App() {
       <NavBar/>
       <header className="App-header">
       <ItemListContainer greetings={'PARAMETRO1'}/>
-      <ItemCount stock={8} initial={2}/>
+      <ItemCount stock={8} initial={1}/>
       </header>
       <section>
         <h1>Section</h1>
