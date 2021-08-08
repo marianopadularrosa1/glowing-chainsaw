@@ -8,7 +8,8 @@ export default class ItemListContainer extends Component {
     render(){
         return(
             <>
-            <h1>Hola soy el ItemListContainer {this.props.greetings}</h1>
+            {/** <h1>Hola soy el ItemListContainer {this.props.greetings}</h1>*/}
+            
             <ItemList/>
             </>
         )
