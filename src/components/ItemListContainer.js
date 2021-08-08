@@ -1,4 +1,5 @@
 import { Component } from "react";
+import ItemList from "./ItemList";
 
 export default class ItemListContainer extends Component {
     state = {
@@ -6,7 +7,10 @@ export default class ItemListContainer extends Component {
       };
     render(){
         return(
+            <>
             <h1>Hola soy el ItemListContainer {this.props.greetings}</h1>
+            <ItemList/>
+            </>
         )
         
     }
