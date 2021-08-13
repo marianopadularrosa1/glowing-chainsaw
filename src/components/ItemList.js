@@ -28,7 +28,7 @@ export default function ItemList() {
 
       return(
           <div >
-              {products.map((eachProduct)=><h1> <Item item={eachProduct}  /> </h1>)}
+              {products.map((eachProduct)=> <Item item={eachProduct}  /> )}
           </div>
       )
  

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Button from "./button";
+import Button from "./Button";
 import ButtonAgregarCarrito from "./ButtonAgregarCarrito";
 
 export default function ItemCount(props) {
-  const [count, setCount] = useState(props.initial);
+  const [count, setCount] = useState(parseInt(props.initial));
   const [initial] = useState(props.initial);
-  const [stock, setStock] = useState(props.stock);
+  const [stock, setStock] = useState(parseInt(props.stock));
   const [deshabilitarBoton, setDeshabilitarBoton]= useState(false);
 
   useEffect(() => {

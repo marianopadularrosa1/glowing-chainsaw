@@ -3,46 +3,34 @@ import { useEffect, useState } from "react";
 
 export default function TestPromise() {
   const [loading, setLoading] = useState(false);
-  const [userData, setUserData] = useState({});
+  //const [userData, setUserData] = useState({});
   const [dolar, setDolar] = useState({});
 
   useEffect(() => {
     setLoading(true);
     const task = new Promise((resolve, reject) => {
+
+      const fetchPromise = fetch("https://ghibliapi.herokuapp.com/people");
+      fetchPromise.then(response => {
+        return response.json();
+      }).then(people => {
+        const names = people.map(person => person.name).join("\n");
+        console.log("People names:"+names);
+      });
       
       // simulando el request al servidor
-
-      const fetchUsers = {
-        data: {
-          name: "Nicolas",
-          lastName: "Restrepo"
-        },
-        status: "ok"
-      };
-
-      if (fetchUsers.status === "ok") {
-        // el dato llego correctamente
-        resolve(fetchUsers.data);
-      } else if (fetchUsers.status === "404") {
-        reject("hubo un error, no se encontro el usuario");
-      }
+      const fetchDolar = fetch("https://pure-wave-58664.herokuapp.com/https://api-dolar-argentina.herokuapp.com/api/dolaroficial");
+      fetchDolar.then(response => {
+        return response.json();
+      }).then(responseDolar => {
+        setDolar(responseDolar); setLoading(false)
+        console.log("responseDolar-->", responseDolar);
+      });
+    
     });
 
-    task
-      .then((fetchUserResponse) => {
-        console.log("fetchUserResponse-->", fetchUserResponse);
-        
-        setUserData(fetchUserResponse);
-      })
-      .catch((error) => console.log("error", error));
-      const fetchDolar = fetch('https://api-dolar-argentina.herokuapp.com/api/dolaroficial')
-      .then(response => response.json())
-      .then(
-          //responseDolar => console.log('fecha-->'+responseDolar.fecha + ', dolar VALOR:'+ responseDolar.compra)
-          (responseDolar) =>{
-            setDolar(responseDolar);
-            setLoading(false)}
-          );
+
+     
       console.log('dolar-->'+dolar.compra);
      
   }, []);
@@ -50,7 +38,7 @@ export default function TestPromise() {
   if (loading) {
     return (
       <div className="App">
-        <h1>Loading user Data....</h1>
+        <h1>Loading Dolar Data....</h1>
       </div>
     );
   }else{
