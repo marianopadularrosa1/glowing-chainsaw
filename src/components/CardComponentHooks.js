@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Button from "./button";
+import Button from "./Button";
 
 export default function CardComponentHooks(props) {
   const [count, setCount] = useState(props.initial);
