@@ -27,6 +27,7 @@ export default function ItemDetailContainer() {
       );
       // siempre siempre que usemos fetch SIEMPREEEEEEEEE
       const data = await response.json();
+      console.log(data);
       setItems(productos);
 
     } catch (error) {

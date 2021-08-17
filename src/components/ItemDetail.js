@@ -8,7 +8,7 @@ export default function ItemDetail({item}) {
         <h1>title:{item.title}</h1>
         <h1>description:{item.description}</h1>
         <h1>precio:${item.precio}.-</h1>
-        <img src={item.image}  style={{ height: 53, width: 36 }} alt="image"/>
+        <img src={item.image}  style={{ height: 53, width: 36 }} alt="cafe" />
       </>
     );
   }
