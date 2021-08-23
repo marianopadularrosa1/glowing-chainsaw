@@ -1,47 +1,41 @@
-
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { productsJson } from "./products.json";
 import ItemDetail from "./ItemDetail";
-import cafe1 from '../assets/cafe1.jpg';
-
-// async function nombredelafuncion(){}
 
 export default function ItemDetailContainer() {
-  const [items, setItems] = useState([]);
+  const [product, setProduct] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const getItems = async () => {
-    const productos = [
-        {id: 1, title: "Cafe Ristretto Italiano", 
-        description: "Cafe Ristretto estilo italiano", 
-        precio: 200,    image: cafe1,}
-    ]
-
-    try {
-      // este response siempre nos devuelve un objeto para ejecutar una promesa
-      const response = await fetch(
-        "https://rickandmortyapi.com/api/character/1",
-        //productos,
-        {
-          method: "GET",
-          timeout : 2000,
-        }
-      );
-      // siempre siempre que usemos fetch SIEMPREEEEEEEEE
-      const data = await response.json();
-      console.log(data);
-      setItems(productos);
-
-    } catch (error) {
-      console.log("aca hay un error");
-    }
-  };
+  const { id } = useParams();
 
   useEffect(() => {
-    getItems();
+    setLoading(true);
+    new Promise((resolve, reject) => {
+      setTimeout(
+        () => resolve(productsJson.filter((item) => item.id === id)),
+        1000
+      );
+    }).then((data) => {
+      setProduct(data[0]);
+      setLoading(false);
+    });
   }, []);
 
-  return (
-    <div className="App">
-      {items.map((i) => <ItemDetail item={i}/>)}
-    </div>
-  );
+  console.log("product", product);
+  if (loading) {
+    return (
+      <div className="App">
+        <h1>Loading Product Data....</h1>
+      </div>
+    );
+  } else {
+    return (
+      <>
+        <div className="row container-fluid">
+          <ItemDetail {...product} />;
+        </div>
+      </>
+    );
+  }
 }

@@ -1,37 +1,49 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useParams } from "react";
+import { Link } from "react-router-dom";
+import { productsJson } from "./products.json";
 import Item from "./Item";
 
 export default function ItemList() {
   const [products, setProducts] = useState([]);
-  useEffect(() => {
-   
-    new Promise((resolve, reject)=>{
-        const productos = [
-            {id: 1, title: "Cafe Ristretto Italiano", description: "Cafe Ristretto estilo italiano", price: 200,    pictureUrl: ""},
-              {id: 2, title: "Cafe Colombiano en grano", description: "Cafe tostado en grano desde Colombia", price: 1400,pictureUrl: ""},
-              {id: 3, title: "Cafe Brasilero en grano",description: "Cafe en tostado en grano desde Brasil",price: 1000,pictureUrl: "",
-              },
-            ];
-        setTimeout(() => { 
-            resolve(productos)
-        }, 2000);
-    })
-        .then((products)=>{
-            console.log(products);
-            setProducts(products);
-        })
-        .catch((error)=>{
-            console.log(error.message);
-        });
-  }, []);
-
-
-      return(
-          <div >
-              {products.map((eachProduct)=> <Item item={eachProduct}  /> )}
-          </div>
-      )
- 
-
+  const [loading, setLoading] = useState(false);
   
+  useEffect(() => {
+    setLoading(true);
+
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(productsJson);
+      }, 3000);
+    })
+      .then((products) => {
+        console.log(products);
+        setProducts(products);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }, []);
+  if (loading) {
+    return (
+      <div className="App">
+        <h1>Loading Products Data....</h1>
+      </div>
+    );
+  }
+  
+  else {
+    return (
+      <>
+        <div className="App">
+          <h1>Productos</h1>
+          <div className="row container-fluid">
+            {products.map((eachProduct) => (
+              <Item item={eachProduct} />
+            ))}
+          </div>
+        </div>
+      </>
+    );
+  }
 }

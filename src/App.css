@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color: #282c34;
+  color:aliceblue;
 }
 
 .App-logo {
@@ -26,6 +28,21 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.card .card-body{
+  background-color: #282c34;
+  color:aliceblue;
+}
+.nike {
+  color: white;
+  font-size: 11rem;
+  left: 15px;
+  line-height: 0.9;
+  opacity: 0.1;
+  position: absolute;
+  text-transform: uppercase;
+  top: 85px;
 }
 
 @keyframes App-logo-spin {

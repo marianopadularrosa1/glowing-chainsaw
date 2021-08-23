@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import CartWidget from "./CartWidget";
 
 export default class NavBar extends React.Component {
@@ -23,18 +24,16 @@ export default class NavBar extends React.Component {
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <p class="nav-link active" aria-current="page">
-                  Inicio
-                </p>
+                <Link to="/" class="nav-link active" aria-current="page">Home</Link>
               </li>
               <li class="nav-item">
-                <p class="nav-link active">Productos</p>
+                <Link to="/products" class="nav-link active">Productos</Link>
               </li>
               <li class="nav-item">
-                <p class="nav-link active">Servicios</p>
+                <Link to="/services" class="nav-link active">Servicios</Link>
               </li>
               <li class="nav-item">
-                <p class="nav-link active">Quienes Somos</p>
+                <Link to="/aboutus" class="nav-link active">Quienes Somos</Link>
               </li>
             </ul>
           </div>

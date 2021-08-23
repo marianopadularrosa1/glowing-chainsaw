@@ -16,7 +16,7 @@ export default function ItemCount(props) {
   
   return (
     <React.Fragment>
-      <h1>contador: {count}</h1>
+      <h1>Cantidad: {count}</h1>
       <h1>initial: {initial}</h1>
       <h1>stock: {stock}</h1>
       <Button deshabilitarBoton={deshabilitarBoton} text="sumar" cuandohagoClick={() => setCount(count + 1)} />

@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 
 export default function TestPromise() {
   const [loading, setLoading] = useState(false);
-  //const [userData, setUserData] = useState({});
   const [dolar, setDolar] = useState({});
 
   useEffect(() => {

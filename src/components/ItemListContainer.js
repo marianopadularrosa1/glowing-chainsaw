@@ -1,18 +1,26 @@
-import { Component } from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Component,useState } from "react";
 import ItemList from "./ItemList";
+import Button from "./button";
+import { Link } from "react-router-dom";
 
-export default class ItemListContainer extends Component {
-    state = {
-        greetings: this.props.greetings ? this.props.greetings : 'vacio',
-      };
-    render(){
+export default function ItemListContainer() {
+
+    const [category, setCategory] = useState([]);
         return(
             <>
-            {/** <h1>Hola soy el ItemListContainer {this.props.greetings}</h1>*/}
-            
-            <ItemList/>
+    <BrowserRouter>
+        <Switch>
+          <Route exact path="/products/:category">
+            <ItemList />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+             {/*<Button text="Grano" cuandohagoClick={() =>  setCategory("grano") } />*/}
+            {/* <Button text="Molido" cuandohagoClick={() => setCategory("molido") } />*/}
+            <ItemList category={category}/>
             </>
         )
         
-    }
+    
 }
