@@ -2,43 +2,42 @@ import { useParams } from "react-router-dom";
 import {  useState,useEffect } from "react";
 import ItemList from "./ItemList";
 
-import { productsJson } from "./products.json";
 
 export default function ItemListContainer() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const { categoryid } = useParams();
+  //const { categoryid } = useParams();
+  //const [p, setP] =useState([]);
   
-  console.log('categoryid--->'+categoryid);
   useEffect(() => {
-    setLoading(true);
-    if(categoryid!==undefined){
-        new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(productsJson.filter((item) => item.category === categoryid))},3000);
-            }).then((data) => {
-                console.log('data--->'+JSON.stringify(data));
-              setProducts(data);
-              setLoading(false);
-            });
-    }
-    else{
-        new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(productsJson)},3000);
-            }).then((data) => {
-                console.log('data--->'+JSON.stringify(data));
-              setProducts(data);
-              setLoading(false);
-            });
-    }
 
-  }, [categoryid]);
+
+    setLoading(true);
+
+    const fetchData = async () => {
+        await fetch('/products.json')
+          .then((res) => res.json())
+          .then((res) => {
+              setProducts(res); 
+              console.log("RESPUESTA:"+res);})
+          .catch((e) => console.error(e));
+      };
+  
+      const timer = setTimeout(() => {
+        fetchData();
+      }, 3000);
+      setLoading(false);
+      return () => clearTimeout(timer);
+      
+    
+
+
+  }, []);
 
   if (loading) {
     return (
       <div className="App">
-        <h1>Loading Products {categoryid} Data....</h1>
+        <h1>Loading Products Data....</h1>
       </div>
     );
   }else{
