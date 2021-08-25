@@ -8,8 +8,8 @@ export default function Item({ item }) {
       <div style={{ border: "2px solid black", margin: "10px" }}>
         <div className="card-header mb-3 col 3">
           <div className="card-body">
-            <h3>Nombre:{item.title}</h3>
-            <h3>Descripcion:{item.description}</h3>
+            <h3>{item.title}</h3>
+            <h5>{item.description}</h5>
             <img
               src={`${item.img}`}
               className="card-img-top"

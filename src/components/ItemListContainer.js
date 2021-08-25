@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+
 import {  useState,useEffect } from "react";
 import ItemList from "./ItemList";
 
@@ -6,8 +6,7 @@ import ItemList from "./ItemList";
 export default function ItemListContainer() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  //const { categoryid } = useParams();
-  //const [p, setP] =useState([]);
+  
   
   useEffect(() => {
 
