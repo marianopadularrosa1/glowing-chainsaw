@@ -1,26 +1,51 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { Component,useState } from "react";
+import { useParams } from "react-router-dom";
+import {  useState,useEffect } from "react";
 import ItemList from "./ItemList";
-import Button from "./button";
-import { Link } from "react-router-dom";
+
+import { productsJson } from "./products.json";
 
 export default function ItemListContainer() {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const { categoryid } = useParams();
+  
+  console.log('categoryid--->'+categoryid);
+  useEffect(() => {
+    setLoading(true);
+    if(categoryid!==undefined){
+        new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(productsJson.filter((item) => item.category === categoryid))},3000);
+            }).then((data) => {
+                console.log('data--->'+JSON.stringify(data));
+              setProducts(data);
+              setLoading(false);
+            });
+    }
+    else{
+        new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(productsJson)},3000);
+            }).then((data) => {
+                console.log('data--->'+JSON.stringify(data));
+              setProducts(data);
+              setLoading(false);
+            });
+    }
 
-    const [category, setCategory] = useState([]);
-        return(
-            <>
-    <BrowserRouter>
-        <Switch>
-          <Route exact path="/products/:category">
-            <ItemList />
-          </Route>
-        </Switch>
-      </BrowserRouter>
-             {/*<Button text="Grano" cuandohagoClick={() =>  setCategory("grano") } />*/}
-            {/* <Button text="Molido" cuandohagoClick={() => setCategory("molido") } />*/}
-            <ItemList category={category}/>
-            </>
-        )
-        
-    
+  }, [categoryid]);
+
+  if (loading) {
+    return (
+      <div className="App">
+        <h1>Loading Products {categoryid} Data....</h1>
+      </div>
+    );
+  }else{
+  return (
+    <>
+      <ItemList productos={products} />
+    </>
+  );
+}
 }

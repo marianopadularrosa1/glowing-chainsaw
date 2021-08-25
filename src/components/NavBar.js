@@ -30,7 +30,10 @@ export default class NavBar extends React.Component {
                 <Link to="/products" class="nav-link active">Productos</Link>
               </li>
               <li class="nav-item">
-                <Link to="/services" class="nav-link active">Servicios</Link>
+                <Link to="/category/grano" class="nav-link active">Grano</Link>
+              </li>
+              <li class="nav-item">
+                <Link to="/category/molido" class="nav-link active">Molido</Link>
               </li>
               <li class="nav-item">
                 <Link to="/aboutus" class="nav-link active">Quienes Somos</Link>

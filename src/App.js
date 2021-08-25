@@ -19,6 +19,9 @@ export default function App() {
           <Route exact path="/products">
             <ItemListContainer />
           </Route>
+          <Route exact path="/category/:categoryid">
+            <ItemListContainer />
+          </Route>
           <Route exact path="/item/:id">
             <ItemDetailContainer />
           </Route>
