@@ -2,11 +2,6 @@ import Item from "./Item";
 
 export default function ItemList({productos}) {
   
-
-  console.log("productos-->"+productos);
-  
-  
- 
   
     return (
       <>

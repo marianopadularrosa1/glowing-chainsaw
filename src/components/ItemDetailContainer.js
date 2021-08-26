@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { productsJson } from "./products.json";
 import ItemDetail from "./ItemDetail";
 
 export default function ItemDetailContainer() {
@@ -11,18 +10,22 @@ export default function ItemDetailContainer() {
 
   useEffect(() => {
     setLoading(true);
-    new Promise((resolve, reject) => {
-      setTimeout(
-        () => resolve(productsJson.filter((item) => item.id === id)),
-        1000
-      );
-    }).then((data) => {
-      setProduct(data[0]);
+    const fetchData = () => {
+      fetch("/products.json")
+        .then((res) => res.json())
+        .then((products) => {
+          setProduct(products.filter((item) => item.id === id)[0]);
+        })
+        .catch((e) => console.error(e));
+    };
+    const timer = setTimeout(() => {
+      fetchData();
       setLoading(false);
-    });
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, []);
 
-  console.log("product", product);
   if (loading) {
     return (
       <div className="App">

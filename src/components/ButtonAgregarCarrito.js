@@ -1,6 +1,6 @@
 export default function ButtonAgregarCarrito(props) {
     return (
-      <button disabled={props.deshabilitarBoton} onClick={() => props.onAdd()}>
+      <button type="button" className="btn btn-primary" disabled={props.deshabilitarBoton} onClick={() => props.onAdd()}>
         {props.text}
       </button>
     );

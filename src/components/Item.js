@@ -5,20 +5,30 @@ import { Link } from "react-router-dom";
 export default function Item({ item }) {
   return (
     <>
-      <div style={{ border: "2px solid black", margin: "10px" }}>
-        <div className="card-header mb-3 col 3">
-          <div className="card-body">
-            <h3>{item.title}</h3>
-            <h5>{item.description}</h5>
+      <div>
+        <div class="card text-center" style={{ border: "1px solid black", margin: "1px" }} >
+          <div class="card-header" style={{ fontStyle: "italic" , color:"black", backgroundcolor: `rgb(40, 44, 52)`}}>
+            {item.title}</div>
+          <div class="card-body">
+            <h5 class="card-title">{item.title}</h5>
+            <p class="card-text">
+            {item.description}
+            </p>
             <img
               src={`${item.img}`}
               className="card-img-top"
               alt="..."
               style={{ height: 200, width: 200 }}
             />
-            <Link to={`/item/${item.id}`}> ver detalle del producto</Link>
+            
           </div>
+          <Link to={`/item/${item.id}`} type="button" class="btn btn-primary">
+            {" "}
+            ver detalle del producto
+          </Link>
+          
         </div>
+        
       </div>
     </>
   );

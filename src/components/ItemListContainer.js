@@ -5,32 +5,24 @@ import ItemList from "./ItemList";
 
 export default function ItemListContainer() {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  
-  
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-
-
     setLoading(true);
-
     const fetchData = async () => {
         await fetch('/products.json')
           .then((res) => res.json())
           .then((res) => {
               setProducts(res); 
-              console.log("RESPUESTA:"+res);})
+              
+            })
           .catch((e) => console.error(e));
       };
-  
       const timer = setTimeout(() => {
         fetchData();
+        setLoading(false);
       }, 3000);
-      setLoading(false);
-      return () => clearTimeout(timer);
       
-    
-
-
+      return () => clearTimeout(timer);
   }, []);
 
   if (loading) {
